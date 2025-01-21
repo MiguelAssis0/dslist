@@ -1,8 +1,6 @@
 package com.MiguelAnjos.dslist.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
@@ -10,7 +8,9 @@ import java.util.Objects;
 @Table(name = "tb_game_list")
 public class GameList {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "list_name")
     private String name;
 
     public GameList() {}
