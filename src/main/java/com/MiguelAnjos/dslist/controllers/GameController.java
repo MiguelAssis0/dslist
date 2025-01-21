@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,7 +19,7 @@ public class GameController {
     @Autowired
     private GameService gameService;
 
-    @RequestMapping
+    @GetMapping
     public ResponseEntity<Page<GameMinDTO>> findAll(@PageableDefault(size = 20) Pageable pageable) {
         Page<GameMinDTO> result = gameService.findAll(pageable);
         return ResponseEntity.ok(result);
