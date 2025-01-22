@@ -6,10 +6,6 @@ spring:
   jpa:
     open-in-view: false
 
-cors:
-  origins: "*"
-  methods: GET, PUT, POST, DELETE, OPTIONS
-
 server:
   error:
     include-stacktrace: never
