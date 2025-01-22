@@ -2,7 +2,7 @@ spring:
   application:
     name: dslist
   profiles:
-    active: ${APP.PROFILE:dev}
+    active: ${APP_PROFILE:prod}
   jpa:
     open-in-view: false
 
