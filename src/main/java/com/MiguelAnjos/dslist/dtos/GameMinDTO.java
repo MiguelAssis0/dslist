@@ -1,6 +1,7 @@
 package com.MiguelAnjos.dslist.dtos;
 
 import com.MiguelAnjos.dslist.entities.Game;
+import com.MiguelAnjos.dslist.projections.GameMinProjection;
 
 public class GameMinDTO {
     private Long id;
@@ -18,6 +19,12 @@ public class GameMinDTO {
         imgUrl = entity.getImgUrl();
         shortDescription = entity.getShortDescription();
     }
+
+    public GameMinDTO(GameMinProjection gameMinProjection) {
+
+    }
+
+
 
     public Long getId() {
         return id;

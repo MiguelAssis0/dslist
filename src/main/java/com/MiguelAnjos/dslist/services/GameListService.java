@@ -3,8 +3,10 @@ package com.MiguelAnjos.dslist.services;
 import com.MiguelAnjos.dslist.dtos.GameDTO;
 import com.MiguelAnjos.dslist.dtos.GameListDTO;
 import com.MiguelAnjos.dslist.dtos.GameMinDTO;
+import com.MiguelAnjos.dslist.dtos.ListDTO;
 import com.MiguelAnjos.dslist.entities.Game;
 import com.MiguelAnjos.dslist.entities.GameList;
+import com.MiguelAnjos.dslist.projections.GameMinProjection;
 import com.MiguelAnjos.dslist.repositories.GameListRepository;
 import com.MiguelAnjos.dslist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +27,8 @@ public class GameListService {
         return result.map(GameListDTO::new);
     }
 
+    public Page<ListDTO> findByList(Long listId, Pageable pageable) {
+        Page<GameMinProjection> result = gameListRepository.searchByList(listId, pageable);
+        return result.map(ListDTO::new);
+    }
 }

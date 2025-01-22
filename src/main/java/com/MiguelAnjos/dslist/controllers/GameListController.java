@@ -4,6 +4,7 @@ package com.MiguelAnjos.dslist.controllers;
 import com.MiguelAnjos.dslist.dtos.GameDTO;
 import com.MiguelAnjos.dslist.dtos.GameListDTO;
 import com.MiguelAnjos.dslist.dtos.GameMinDTO;
+import com.MiguelAnjos.dslist.dtos.ListDTO;
 import com.MiguelAnjos.dslist.services.GameListService;
 import com.MiguelAnjos.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,12 @@ public class GameListController {
     @GetMapping
     public ResponseEntity<Page<GameListDTO>> findAll(@Validated @PageableDefault(size = 20) Pageable pageable) {
         Page<GameListDTO> result = gameListService.findAll(pageable);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(value = "/{listId}/games")
+    public ResponseEntity<Page<ListDTO>> findByList(@PathVariable Long listId, @Validated @PageableDefault(size = 20) Pageable pageable) {
+        Page<ListDTO> result = gameListService.findByList(listId, pageable);
         return ResponseEntity.ok(result);
     }
 
