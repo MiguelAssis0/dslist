@@ -1,10 +1,7 @@
 package com.MiguelAnjos.dslist.controllers;
 
 
-import com.MiguelAnjos.dslist.dtos.GameDTO;
-import com.MiguelAnjos.dslist.dtos.GameListDTO;
-import com.MiguelAnjos.dslist.dtos.GameMinDTO;
-import com.MiguelAnjos.dslist.dtos.ListDTO;
+import com.MiguelAnjos.dslist.dtos.*;
 import com.MiguelAnjos.dslist.services.GameListService;
 import com.MiguelAnjos.dslist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,5 +31,12 @@ public class GameListController {
         Page<ListDTO> result = gameListService.findByList(listId, pageable);
         return ResponseEntity.ok(result);
     }
+
+    @PostMapping(value = "/{listId}/replacement")
+    public ResponseEntity<Void> move(@PathVariable Long listId, @RequestBody ReplacementDTO body) {
+        gameListService.move(listId, body.getSourceIndex(), body.getDestinationIndex());
+        return ResponseEntity.noContent().build();
+    }
+
 
 }
